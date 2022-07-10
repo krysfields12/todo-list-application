@@ -4,14 +4,8 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true }) = () => {
-    try {
-        console.log('Connected to MongoDB sucessfully')
-    } catch(err) {
-        console.log('Error while attempting to connect to MongoDB');
-        console.log(err)
-    }
-}
+mongoose.connect('mongodb+srv://krysfields012:abcdefg@cluster0.hfceu.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }) 
+mongoose.connection.on('error', console.error.bind(console,'MongoDB connection error'))
 
 module.exports = {
     mongoose
