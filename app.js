@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const Todo = require('./db/models/Todo');
+const User = require('./db/models/User');
 const bodyParser = require('body-parser');
 const { mongoose } = require('./db/mongoose');
 
 //middleware
 app.use(bodyParser.json());
 
+//TODO routes below
 //GET all todos
 app.get('/todos', async (req, res, next) => {
   try {
@@ -67,6 +69,63 @@ app.put('/todos/:id', async (req, res, next) => {
   }
 });
 
+//USER ROUTES BELOW
+app.get('/users', async (req, res, next) => {
+    try {
+        const users = await User.find({
+            attibutes: ['id', 'username', 'email']
+        })
+        res.json(users)
+        } catch(err) {
+          next(err)
+    }
+})
+
+//GET /users/:id
+app.get('/users/:id', async (req, res, next) => {
+    try {
+        const users = await User.findOne({
+            where: {
+                id: req.params.id
+            },
+            attributes: ['id', 'username', 'email',]
+        })
+        res.json(users)
+    } catch(err) {
+        next(err)
+    }
+})
+
+// DELETE /users/:id
+app.delete('/users/:id', async (req, res, next) => {
+    try {
+        const userToDelete = await User.findById(req.params.id);
+        await userToDelete.destroy()
+        res.json(userToDelete)
+    } catch(err) {
+        next(err)
+    }
+})
+
+// POST
+app.post('/users', async (req, res, next) => {
+    try {
+        res.json(await User.create(req.body));
+    } catch(err) {
+        next(err);
+    }
+})
+
+//PUT
+app.put('/users/:id', async (req, res, next) => {
+    try {
+        const user = await User.findOneAndUpdate({_id: req.params.id});
+        res.json(await user.update(req.body));
+        res.sendStatus(200);
+      } catch (err) {
+        next(err);
+      }
+    });
 
 app.listen(3000, () => {
     console.log('Mixing up on port 3000')
