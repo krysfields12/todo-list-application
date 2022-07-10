@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const Todo = require('./db/models')
 
 //GET
 app.get('/todos', async (req, res, next) => {
