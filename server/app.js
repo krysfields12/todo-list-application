@@ -5,7 +5,6 @@ const Todo = require('./db/models/Todo');
 const User = require('./db/models/User');
 const bodyParser = require('body-parser');
 const { mongoose } = require('./db/mongoose');
-const { RSA_NO_PADDING } = require('constants');
 
 //middleware
 app.use(bodyParser.json());
@@ -30,9 +29,11 @@ app.get('/todos', async (req, res, next) => {
 });
 
 //GET single todo
-app.get('/todos/:id', async (req, res, next) => {
+app.get('/todos/:todoId', async (req, res, next) => {
   try {
-   const todo = await Todo.findOne();
+   const todo = await Todo.find({
+   _id: req.params.todoId
+   });
    res.json(todo)
   } catch (err) {
     next(err);
