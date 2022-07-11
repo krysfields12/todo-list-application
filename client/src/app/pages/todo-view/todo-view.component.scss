@@ -16,6 +16,15 @@
     max-height: 680px;
 }
 
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    background: white; 
+    padding: 42px;
+    border-radius: 8px;
+}
+
 .todo-list-container {
     display: flex;
     flex-grow: 1;
