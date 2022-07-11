@@ -12,4 +12,12 @@ export class TaskService {
     // we want to send a web request to create a list
     return this.webReqService.post('todos', {title, description, dueDate})
   }
+
+  getTodos() {
+    return this.webReqService.get('todos');
+  }
+
+  getTodo(todoId:string) {
+    return this.webReqService.get(`todos/${todoId}`);
+  }
 }

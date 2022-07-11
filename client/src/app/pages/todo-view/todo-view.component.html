@@ -2,34 +2,27 @@
     <div class="todo-manager-container">
         <div class="sidebar has-background-white"> 
             <h1 class="title has-text-primary">
-                Lists
+                Todos
             </h1>
 
             <div class="list-menu">
-                <a class="list-menu-item is-active">
-                    <p>List #1</p>
-                </a>
                 <a class="list-menu-item">
                     <p>List #1</p>
                 </a>
-                <a class="list-menu-item">
-                    <p>List #1</p>
+                <a class="list-menu-item" *ngFor="let todo of todos" [routerLink]="['/todos', todo._id]">
+                    <p>{{todo.title}}</p>
                 </a>
             </div>
             <button class='button is-primary has-text-white' routerLink="/new-todo">+ New List</button>
         </div>
         <div class="todo-list-container has-background-light">
             <h1 class="title has-text-primary">
-                Tasks
+                <Details></Details>
             </h1>
-            <div class="task">
-                <p>This is something I have to do</p>
-            </div>
-            <div class="task">
-                <p>This is something I have to do</p>
-            </div>
-            <div class="task complete">
-                <p>This is something I have to do</p>
+            <div class="task" *ngFor="let todo of todos">
+                <p>Title: {{todo.title}}</p>
+                <p>Description: {{todo.description}}</p>
+                <p>Due-date: {{todo.dueDate}}</p>
             </div>
         </div>
     </div>

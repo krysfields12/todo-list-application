@@ -4,8 +4,10 @@ import { NewTodoComponent } from './pages/new-todo/new-todo.component';
 import { TodoViewComponent } from './pages/todo-view/todo-view.component';
 
 const routes: Routes = [
-  {path: '', component: TodoViewComponent},
-  {path: 'new-todo', component: NewTodoComponent}
+  {path: '', redirectTo: 'todos', pathMatch: 'full'},
+  {path: 'new-todo', component: NewTodoComponent},
+  {path: 'todos', component: TodoViewComponent},
+  {path: 'todos/:todoId', component: TodoViewComponent}
 ];
 
 @NgModule({

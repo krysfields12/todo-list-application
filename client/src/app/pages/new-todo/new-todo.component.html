@@ -3,17 +3,15 @@
     <h1 class="title">
         Create a new todo
     </h1>
-    <input class="input has-background-light is-small" type="text" placeholder="title">
+    <input #TodoTitleInput class="input has-background-light is-small" type="text" placeholder="title">
     <br>
-    <textarea class="textarea has-background-light is-small" placeholder="description"></textarea>
+    <textarea #TodoDescriptionInput class="textarea has-background-light is-small" placeholder="description"></textarea>
     <br>
-    <input class="input has-background-light is-small" type="text" placeholder="due-date">
+    <input #TodoDuedateInput class="input has-background-light is-small" type="text" placeholder="due-date">
     <br>
     <div class="buttons is-right">
-        <button class="button">Cancel</button>
-        <button class="button is-primary has-text-white is-small">Add</button>
+        <button class="button is-small" routerLink="/">Cancel</button>
+        <button class="button is-primary has-text-white is-small" (click)="createTodo(TodoTitleInput.value, TodoDescriptionInput.value, TodoDuedateInput.value)">Add</button>
     </div>
-    
-
   </div>  
 </div>

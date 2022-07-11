@@ -16,6 +16,7 @@ export class NewTodoComponent implements OnInit {
   createTodo(title: string, description: string, dueDate: string) {
     this.taskService.createList(title, description, dueDate).subscribe((response: any) => {
       console.log(response);
+      // Now we navigate to /todos/response._id
     })
   }
 
