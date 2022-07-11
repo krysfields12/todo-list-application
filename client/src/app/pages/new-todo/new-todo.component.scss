@@ -1,0 +1,21 @@
+.modal-box {
+    min-height: 320px;
+    width: 100%;
+    max-width: 580px;
+    background: white;
+    border-radius: 5px;
+    padding: 35px;
+}
+
+.input {
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+
+}
+
+.textarea {
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+}

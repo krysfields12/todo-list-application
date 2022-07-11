@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from 'src/app/task.service';
 
 @Component({
   selector: 'app-new-todo',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewTodoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
+  }
+
+  createTodo(title: string, description: string, dueDate: string) {
+    this.taskService.createList(title, description, dueDate).subscribe((response: any) => {
+      console.log(response);
+    })
   }
 
 }

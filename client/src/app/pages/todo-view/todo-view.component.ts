@@ -12,9 +12,4 @@ export class TodoViewComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  createNewTodo() {
-    this.taskService.createList("Testing", "Testing,", "7/11/2022").subscribe((response: any) => {
-      console.log(response);
-    })
-  }
 }
