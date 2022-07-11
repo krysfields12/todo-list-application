@@ -1,12 +1,22 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const Todo = require('./db/models/Todo');
 const User = require('./db/models/User');
 const bodyParser = require('body-parser');
 const { mongoose } = require('./db/mongoose');
+const { RSA_NO_PADDING } = require('constants');
 
 //middleware
 app.use(bodyParser.json());
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+})
+
+app.use(express.static(path.join(__dirname, 'client')));
 
 //TODO routes below
 //GET all todos
